@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Tabuada</title>
+  <title>Somador</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -14,6 +14,7 @@
     input,
     button {
       padding: 10px;
+      margin: 10px;
       font-size: 16px;
     }
 
@@ -26,15 +27,16 @@
 </head>
 
 <body>
-  <h1>Tabuada de um número</h1>
+  <h1>Somador de números até digitar zero</h1>
   <input type="number" id="numero" placeholder="Digite a um número" />
-  <button onclick="calcular()">Calcular</button>
+  <button onclick="calcular()">Somar</button>
 
   <div id="resultado"></div>
 
   <script>
+    let soma = 0;
     function calcular() {
-      const n = parseInt(document.getElementById("numero").value);
+      const n = parseFloat(document.getElementById("numero").value);
       const resultado = document.getElementById("resultado");
 
       if (isNaN(n)) {
@@ -42,12 +44,15 @@
         return;
       }
 
-      resultado.textContent = "";
-      resultado.textContent = `Tabuada do ${n}`;
-      for (i = 0; i < 10; i++) {
-        if (i === 0) resultado.innerHTML += "<br>";
-        resultado.innerHTML += `${n} x ${i} = ${n * i}<br>`;
+      if (n === 0) {
+        resultado.innerHTML = "Você digitou zero. O programa foi encerrado.";
+        resultado.innerHTML += `<br>Soma final = ${soma}`;
+        soma = 0;
+        return;
       }
+
+      soma += n;
+      resultado.innerHTML = `Soma até o momento = ${soma}`;
     }
   </script>
 </body>

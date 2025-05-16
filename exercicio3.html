@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Contador</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input,
+    button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Contador de</h1>
+  <input type="number" min="1" max="100" id="input-blocked" value="1" disabled />
+  até
+  <input type="number" id="numero" min="1" max="100" placeholder="Digite a um número" />
+  <button onclick="calcular()">Contar</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function calcular() {
+      const n = parseInt(document.getElementById("numero").value);
+      const resultado = document.getElementById("resultado");
+
+      if (isNaN(n)) {
+        resultado.textContent = "Por favor, digite um número válido.";
+        return;
+      }
+
+      if (n < 1) {
+        resultado.textContent = "Por favor, digite um número maior que 0.";
+        return;
+      }
+
+      if (n > 100) {
+        resultado.textContent = "Por favor, digite um número menor ou igual a 100.";
+        return;
+      }
+
+      resultado.innerHTML = "";
+      for (i = 1; i <= parseInt(n); i++) {
+        resultado.innerHTML += `${i}`;
+        if (i < n) resultado.innerHTML += ", ";
+        else resultado.innerHTML += ".";
+      }
+    }
+  </script>
+</body>
+
+</html>

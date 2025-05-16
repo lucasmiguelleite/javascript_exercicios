@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Tabuada</title>
+  <title>Calcular N termos da sequência de Fibonacci</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -14,6 +14,7 @@
     input,
     button {
       padding: 10px;
+      margin: 10px;
       font-size: 16px;
     }
 
@@ -26,28 +27,32 @@
 </head>
 
 <body>
-  <h1>Tabuada de um número</h1>
-  <input type="number" id="numero" placeholder="Digite a um número" />
+  <h1>Calcular N termos da sequência de Fibonacci</h1>
+  <input type="number" id="numero" placeholder="Digite um número" />
   <button onclick="calcular()">Calcular</button>
 
   <div id="resultado"></div>
 
   <script>
     function calcular() {
-      const n = parseInt(document.getElementById("numero").value);
+      const n = document.getElementById("numero").value;
       const resultado = document.getElementById("resultado");
 
-      if (isNaN(n)) {
-        resultado.textContent = "Por favor, digite um número válido.";
+      if (isNaN(n) || n <= 0) {
+        resultado.textContent = "Por favor, um número válido.";
         return;
       }
 
-      resultado.textContent = "";
-      resultado.textContent = `Tabuada do ${n}`;
-      for (i = 0; i < 10; i++) {
-        if (i === 0) resultado.innerHTML += "<br>";
-        resultado.innerHTML += `${n} x ${i} = ${n * i}<br>`;
-      }
+      let f = fibonacci(n);
+
+      resultado.innerHTML = `${f}`;
+    }
+
+    function fibonacci(numero) {
+      if (numero <= 1)
+        return numero;
+
+      return fibonacci(numero - 1) + fibonacci(numero - 2);
     }
   </script>
 </body>

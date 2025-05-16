@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Inversor de String</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input,
+    button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Inversor de String</h1>
+  <input type="text" id="palavra" placeholder="Digite uma palavra" />
+  <button onclick="inverter()">Inverter</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function inverter() {
+      const p = document.getElementById("palavra").value;
+      const resultado = document.getElementById("resultado");
+      let word = p;
+
+      if (!p || p.trim() === "") {
+        resultado.textContent = "Por favor, digite uma palavra válida.";
+        return;
+      }
+
+      word = p.split("").reverse().join("");
+      resultado.innerHTML = `A Palavra invertida é ${word}`;
+    }
+  </script>
+</body>
+
+</html>

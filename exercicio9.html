@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Contar vogais em uma palavra</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input,
+    button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Contar vogais em uma palavra</h1>
+  <input type="text" id="palavra" placeholder="Digite uma palavra" />
+  <button onclick="contar()">Contar</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function contar() {
+      const p = document.getElementById("palavra").value;
+      const resultado = document.getElementById("resultado");
+
+      if (!p || p.trim() === "") {
+        resultado.textContent = "Por favor, informe uma palavra válida.";
+        return;
+      }
+
+      let v = contarVogais(p);
+
+      resultado.innerHTML = `${v} vogais na palavra "${p}"`;
+    }
+
+    function contarVogais(palavra) {
+      const vogais = "aeiouAEIOU";
+      let contador = 0;
+
+      for (let i = 0; i < palavra.length; i++) {
+        if (vogais.includes(palavra[i]))
+          contador++;
+
+      }
+
+      return contador;
+    }
+  </script>
+</body>
+
+</html>

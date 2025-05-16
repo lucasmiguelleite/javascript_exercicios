@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Encontrar o maior número da lista</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input,
+    button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    input {
+      width: 40vw;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Encontrar o maior número da lista</h1>
+  <input type="text" id="palavra" placeholder="Digite uma lista de números separados por virgula" />
+  <button onclick="encontrarMaiorNumeroLista()">Encontrar o maior número</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function encontrarMaiorNumeroLista() {
+      const p = document.getElementById("palavra").value;
+      const resultado = document.getElementById("resultado");
+
+      if (!p || p.trim() === "") {
+        resultado.textContent = "Por favor, informe uma lista válida.";
+        return;
+      }
+
+      let array = p.split(",").map(Number);
+
+      array = Math.max.apply(null, array);
+
+      console.log(array);
+
+
+      resultado.innerHTML = `O maior valor presente na lista: ${array}`;
+    }
+  </script>
+</body>
+
+</html>
